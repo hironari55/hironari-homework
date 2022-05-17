@@ -1,5 +1,5 @@
-<header class="text-gray-600 body-font bg-indigo-500">
-    <div class=" p-5 flex flex-wrap">
+<header class="text-gray-600 body-font bg-blue-800">
+    <div class="p-4 flex flex-wrap">
         <a href="{{ route('reviews.index') }}" class="flex title-font font-medium items-center text-xl ml-3 text-white md:mb-0">
             ShopReview
         </a>
