@@ -10,14 +10,4 @@ class ReviewController extends Controller
     {
         return view('index');
     }
-
-    public function form()
-    {
-        return view('form');
-    }
-
-    public function search()
-    {
-        return view('search');
-    }
 }
