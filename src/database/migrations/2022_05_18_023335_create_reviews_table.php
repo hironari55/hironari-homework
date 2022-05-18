@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('gender');
             $table->integer('age');
             $table->string('emailAddress', 100);
-            $table->integer('ReceiveMail');
+            $table->string('ReceiveMail');
             $table->integer('evaluation');
             $table->string('opinion', 200);
             $table->timestamps();
