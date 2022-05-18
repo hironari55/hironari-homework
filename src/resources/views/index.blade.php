@@ -3,32 +3,47 @@
 @section('content')
 <main>
     <div class="w-9/12 mx-auto my-5 py-5 border rounded-md shadow flex">
-        <div class="w-2/5">
+        <div class="w-2/5 mx-5 my-auto">
             <img src="/images/McDonald's.png" alt="マクドナルド">
         </div>
-        <div>
-            <h2>A店</h2>
-            <p>テキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        <div class="w-2/5 ml-auto mx-auto">
+            <h2 class="mb-8 text-2xl">マクドナルド</h2>
+            <div class="mb-8">星星星</div>
+            <p class="mb-10">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <div class="flex text-white">
+                <a href="" class="btn py-4 px-8 rounded-md bg-green-500">詳細</a>
+                <a href="" class="btn p-4 rounded-md ml-auto bg-blue-500">レビューする</a>
+            </div>
         </div>
     </div>
 
     <div class="w-9/12 mx-auto my-5 py-5 border rounded-md shadow flex">
-        <div class="w-2/5">
+        <div class="w-2/5 mx-5 my-auto">
             <img src="/images/MosBurger.png" alt="モスバーガー">
         </div>
-        <div>
-            <h2>A店</h2>
-            <p>テキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        <div class="w-2/5 ml-auto mx-auto">
+            <h2 class="mb-8 text-2xl">モスバーガー</h2>
+            <div class="mb-8">星星星</div>
+            <p class="mb-10">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <div class="flex text-white">
+                <a href="" class="btn py-4 px-8 rounded-md bg-green-500">詳細</a>
+                <a href="" class="btn p-4 rounded-md ml-auto bg-blue-500">レビューする</a>
+            </div>
         </div>
     </div>
 
     <div class="w-9/12 mx-auto my-5 py-5 border rounded-md shadow flex">
-        <div class="w-2/5">
+        <div class="w-2/5 mx-5 my-auto">
             <img src="/images/Kentucky.png" alt="ケンタッキー">
         </div>
-        <div>
-            <h2>A店</h2>
-            <p>テキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        <div class="w-2/5 ml-auto mx-auto">
+            <h2 class="mb-8 text-2xl">ケンタッキー</h2>
+            <div class="mb-8">星星星</div>
+            <p class="mb-10">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            <div class="flex text-white">
+                <a href="" class="btn py-4 px-8 rounded-md bg-green-500">詳細</a>
+                <a href="" class="btn p-4 rounded-md ml-auto bg-blue-500">レビューする</a>
+            </div>
         </div>
     </div>
 </main>
