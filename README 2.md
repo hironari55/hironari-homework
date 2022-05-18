@@ -1,1 +1,0 @@
-# hironari-homework
