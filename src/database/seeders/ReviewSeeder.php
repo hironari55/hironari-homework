@@ -15,16 +15,18 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
-        $review = new Review();
-        $review->user_id = 1;
-        $review->restaurant_id = 1;
-        $review->name = 'ひろなり';
-        $review->gender = '男';
-        $review->age = 20;
-        $review->emailAddress = 'hironari@hironari';
-        $review->ReceiveMail = '受け取る';
-        $review->evaluation = 4;
-        $review->opinion = 'スパチキが美味しい';
-        $review->save();
+        foreach (range(1, 2) as $num) {
+            $review = new Review();
+            $review->user_id = $num;
+            $review->restaurant_id = 1;
+            $review->name = 'ひろなり' . $num;
+            $review->gender = '男';
+            $review->age = 20;
+            $review->emailAddress = 'hironari@hironari' . $num;
+            $review->ReceiveMail = '受け取る';
+            $review->evaluation = 5 - $num;
+            $review->opinion = 'スパチキが美味しい' .  $num;
+            $review->save();
+        }
     }
 }

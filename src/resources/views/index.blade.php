@@ -8,7 +8,11 @@
         </div>
         <div class="w-2/5 ml-auto mx-auto">
             <h2 class="mb-8 text-2xl">マクドナルド</h2>
-            <div class="mb-8">星星星</div>
+            @if($macAverageRating > 0)
+                <div class="mb-8">星星星星星({{ $macAverageRating }})</div>
+            @else
+                <div class="mb-8">まだレビューがありません</div>
+            @endif
             <p class="mb-10">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
             <div class="flex text-white">
                 <a href="" class="btn py-4 px-8 rounded-md bg-green-500">詳細</a>
@@ -23,7 +27,11 @@
         </div>
         <div class="w-2/5 ml-auto mx-auto">
             <h2 class="mb-8 text-2xl">モスバーガー</h2>
-            <div class="mb-8">星星星</div>
+            @if($mosAverageRating > 0)
+                <div class="mb-8">星星星星星({{ $mosAverageRating }})</div>
+            @else
+                <div class="mb-8">まだレビューがありません</div>
+            @endif
             <p class="mb-10">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
             <div class="flex text-white">
                 <a href="" class="btn py-4 px-8 rounded-md bg-green-500">詳細</a>
@@ -38,7 +46,11 @@
         </div>
         <div class="w-2/5 ml-auto mx-auto">
             <h2 class="mb-8 text-2xl">ケンタッキー</h2>
-            <div class="mb-8">星星星</div>
+            @if($kentuckyAverageRating > 0)
+                <div class="mb-8">星星星星星({{ $kentuckyAverageRating }})</div>
+            @else
+                <div class="mb-8">まだレビューがありません</div>
+            @endif
             <p class="mb-10">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
             <div class="flex text-white">
                 <a href="" class="btn py-4 px-8 rounded-md bg-green-500">詳細</a>

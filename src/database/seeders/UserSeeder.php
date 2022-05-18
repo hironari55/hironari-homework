@@ -15,10 +15,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = new User();
-        $user->name = 'hironari';
-        $user->email = 'hironari@hironari';
-        $user->password = 'bonnbonn';
-        $user->save();
+        foreach (range(1,3) as $num) {
+            $user = new User();
+            $user->name = 'hironari' . $num;
+            $user->email = 'hironari@hironari' . $num;
+            $user->password = 'bonnbonn' . $num;
+            $user->save();
+        }
+
     }
 }
