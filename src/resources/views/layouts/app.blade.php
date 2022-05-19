@@ -7,7 +7,7 @@
     </head>
 
     <body>
-        @include('share.navbar')
+        @include('common.navbar')
         @yield('content')
     </body>
 </html>

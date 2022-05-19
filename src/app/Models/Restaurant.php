@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Restaurant extends Model
 {
     use HasFactory;
-
     public function reviews() {
         return $this->hasMany('App\Models\Review');
     }

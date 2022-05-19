@@ -8,26 +8,42 @@ use App\Models\Review;
 
 class ReviewController extends Controller
 {
+    private $AverageRatings = [];
+    private $numberOne = 1;
+    private $RestaurantsNames = [];
     public function index()
     {
-        $macReviews = Restaurant::find(1)->reviews()->get();
-        $mosReviews = Restaurant::find(2)->reviews()->get();
-        $kentuckyReviews =  Restaurant::find(3)->reviews()->get();
+        /* それぞれのレビューの取得を関数化する */
+        $allRestaurants = Restaurant::all();
+        $numberOfRestaurants = count($allRestaurants);
 
-        $macAverageRating = $this->calculateAverageReview($macReviews);
-        $mosAverageRating = $this->calculateAverageReview($mosReviews);
-        $kentuckyAverageRating = $this->calculateAverageReview($kentuckyReviews);
+
+        while ($this->numberOne <= $numberOfRestaurants) {
+            $eachReviews = Restaurant::find($this->numberOne++)->reviews()->get();
+            $this->AverageRatings[] = $this->calculateAverageReview($eachReviews);
+        }
 
         return view('index', [
-            'macAverageRating' => $macAverageRating,
-            'mosAverageRating' => $mosAverageRating,
-            'kentuckyAverageRating' => $kentuckyAverageRating,
+            'AverageRatings' => $this->AverageRatings,
+            'allRestaurants' => $allRestaurants,
         ]);
     }
 
-    public function form()
+    public function showReviewCreate($id)
     {
-        return view('form');
+        $restaurant  = Restaurant::find($id);
+
+        return view('reviewCreate', [
+            'restaurant' => $restaurant,
+            'id' => $id,
+        ]);
+    }
+
+    public function create(Request $request)
+    {
+
+        $review = new Review();
+        $review->name = $request->name;
     }
 
     public function search()

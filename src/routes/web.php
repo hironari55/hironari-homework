@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +20,11 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'],function () {
     /* レビュー一覧画面 */
-    Route::get('/index', 'App\Http\Controllers\ReviewController@index')->name('reviews.index');
+    Route::get('/index', [ReviewController::class, 'index'])->name('reviews.index');
 
     /* レビュー書き込み画面 */
-    Route::get('/review/create', 'App\Http\Controllers\ReviewController@showCreate')->name('reviews.create');
-    Route::post('/review/create', 'App\Http\Controllers\ReviewController@create');
+    Route::get('/review/{id}/create', [ReviewController::class, 'showReviewCreate'])->name('reviews.create');
+    Route::post('/review/{id}/create', [ReviewController::class, 'showReviewCreate']);
 
     /* レビュー確認画面 */
 
