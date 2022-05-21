@@ -9,13 +9,11 @@
         </div>
         <div class="w-2/5 ml-auto mx-auto">
             <h2 class="mb-8 text-2xl">{{ $restaurant->name }}</h2>
-
             @if($AverageRatings[$loop->index] > 0)
             <div class="mb-8">{{$AverageRatings[$loop->index]}}</div>
             @else
             <div class="mb-8">まだレビューがありません</div>
             @endif
-
             <p class="mb-10">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
             <div class="flex text-white">
                 <a href="" class="btn py-4 px-8 rounded-md bg-green-500">詳細</a>

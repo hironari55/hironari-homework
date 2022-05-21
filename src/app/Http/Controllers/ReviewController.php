@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -16,7 +17,6 @@ class ReviewController extends Controller
         /* それぞれのレビューの取得を関数化する */
         $allRestaurants = Restaurant::all();
         $numberOfRestaurants = count($allRestaurants);
-
 
         while ($this->numberOne <= $numberOfRestaurants) {
             $eachReviews = Restaurant::find($this->numberOne++)->reviews()->get();
@@ -39,11 +39,22 @@ class ReviewController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create($id, Request $request)
     {
-
         $review = new Review();
+        $review->user_id = Auth::user()->id;
         $review->name = $request->name;
+        $review->gender = $request->gender;
+        $review->age = $request->age;
+        $review->emailAddress = $request->emailAddress;
+        $review->receiveEmail= $request->receiveEmail;
+        $review->evaluation = $request->evaluation;
+        $review->opinion = $request->opinion;
+
+        $restaurant = Restaurant::find($id);
+        $restaurant->reviews()->save($review);
+
+        return redirect()->route('reviews.index');
     }
 
     public function search()

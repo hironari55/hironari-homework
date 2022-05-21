@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'],function () {
 
     /* レビュー書き込み画面 */
     Route::get('/review/{id}/create', [ReviewController::class, 'showReviewCreate'])->name('reviews.create');
-    Route::post('/review/{id}/create', [ReviewController::class, 'showReviewCreate']);
+    Route::post('/review/{id}/create', [ReviewController::class, 'create']);
 
     /* レビュー確認画面 */
 

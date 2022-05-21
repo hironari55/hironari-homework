@@ -23,7 +23,7 @@ class ReviewSeeder extends Seeder
             $review->gender = '男';
             $review->age = 20;
             $review->emailAddress = 'hironari@hironari' . $num;
-            $review->ReceiveMail = '受け取る';
+            $review->receiveEmail = '受け取る';
             $review->evaluation = 5 - $num;
             $review->opinion = 'スパチキが美味しい' .  $num;
             $review->save();
