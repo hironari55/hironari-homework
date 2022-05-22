@@ -5,6 +5,15 @@
 <div class="w-9/12 mx-auto my-5 py-5 border rounded-md shadow">
     <div class="w-9/12 ml-auto mx-auto">
         <h2 class="font-semibold text-2xl text-center mb-10">{{ $restaurant->name }}へのご意見をお聞かせください</h2>
+        @if ($errors->any())
+        <div class="text-red-600">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <form action="{{ route('reviews.create', ['id' => $id]) }}" class="w-3/4 mx-auto" method="post">
             @csrf
             <div class="my-8">
@@ -12,7 +21,7 @@
                     <label for="name" class="">氏名</label>
                     <p class="bg-red-400 text-gray-50 py-1 px-2 rounded-full ml-2 text-xs">必須</p>
                 </div>
-                <input type="text" class="shadow border-gray-200 rounded block ms-auto my-2 w-full" placeholder="入力してください" name="name" id="name">
+                <input type="text" class="shadow border-gray-200 rounded block ms-auto my-2 w-full" placeholder="入力してください" name="name" id="name" value="{{ old('name') }}">
             </div>
             <div class="my-8">
                 <div class="flex mr-auto">
@@ -49,7 +58,7 @@
                     <label for="emailAddress" class="">メールアドレス</label>
                     <p class="bg-red-400 text-gray-50 py-1 px-2 rounded-full ml-2 text-xs">必須</p>
                 </div>
-                <input type="text" class="shadow border-gray-200 rounded block ms-auto my-2 w-full" placeholder="入力してください" name="emailAddress" id="emailAddress">
+                <input type="text" class="shadow border-gray-200 rounded block ms-auto my-2 w-full" placeholder="入力してください" name="emailAddress" id="emailAddress" value="{{ old('name') }}">
             </div>
             <div class="my-8">
                 <div class="flex mr-auto">
@@ -86,9 +95,9 @@
                     <label for="opinion" class="">ご意見</label>
                     <p class="bg-red-400 text-gray-50 py-1 px-2 rounded-full ml-2 text-xs">必須</p>
                 </div>
-                <textarea type="text" class="shadow border-gray-200 rounded block ms-auto my-2 w-full resize-none" placeholder="入力してください" name="opinion" id="opinion"></textarea>
+                <textarea type="text" class="shadow border-gray-200 rounded block ms-auto my-2 w-full resize-none" placeholder="入力してください" name="opinion" id="opinion" value="{{ old('opinion') }}"></textarea>
             </div>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto" type="submit">
+            <button class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto" type="submit">
                 確認
             </button>
             <form>

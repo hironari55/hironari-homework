@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
-use Illuminate\Http\Request;
 use App\Models\Review;
+use Illuminate\Http\Request;
+use App\Http\Requests\createRequest;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
@@ -39,7 +40,7 @@ class ReviewController extends Controller
         ]);
     }
 
-    public function create($id, Request $request)
+    public function create($id, createRequest $request)
     {
         $review = new Review();
         $review->user_id = Auth::user()->id;
@@ -55,6 +56,21 @@ class ReviewController extends Controller
         $restaurant->reviews()->save($review);
 
         return redirect()->route('reviews.index');
+    }
+
+    public function showConfirm()
+    {
+
+    }
+
+    public function confirm()
+    {
+        
+    }
+
+    public function showComplete()
+    {
+
     }
 
     public function search()
@@ -74,4 +90,6 @@ class ReviewController extends Controller
             return array_sum($totalReview) / count($eachReviews);
         }
     }
+
+
 }

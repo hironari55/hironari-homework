@@ -27,8 +27,11 @@ Route::group(['middleware' => 'auth'],function () {
     Route::post('/review/{id}/create', [ReviewController::class, 'create']);
 
     /* レビュー確認画面 */
+    Route::get('/review/{id}/createConfirm', [ReviewController::class, 'showConfirm'])->name('reviews.confirm');
+    Route::post('/review/{id}/createConfirm', [ReviewController::class, 'confirm']);
 
     /* 送信確認画面 */
+    Route::get('/review/{id}/createComplete', [ReviewController::class, 'showComplete'])->name('reviews.complete');
 
     /* レビュー検索画面 */
     Route::get('/search', 'App\Http\Controllers\ReviewController@search')->name('searchReviews');
