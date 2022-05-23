@@ -23,15 +23,15 @@ Route::group(['middleware' => 'auth'],function () {
     Route::get('/index', [ReviewController::class, 'index'])->name('reviews.index');
 
     /* レビュー書き込み画面 */
-    Route::get('/review/{id}/create', [ReviewController::class, 'showReviewCreate'])->name('reviews.create');
-    Route::post('/review/{id}/create', [ReviewController::class, 'create']);
+    Route::get('/review/{id}/create', [ReviewController::class, 'showCreate'])->name('reviews.create');
+    Route::post('/review/{id}/create', [ReviewController::class, 'postCreate']);
 
     /* レビュー確認画面 */
     Route::get('/review/{id}/createConfirm', [ReviewController::class, 'showConfirm'])->name('reviews.confirm');
-    Route::post('/review/{id}/createConfirm', [ReviewController::class, 'confirm']);
+    Route::post('/review/{id}/createConfirm', [ReviewController::class, 'postConfirm']);
 
-    /* 送信確認画面 */
-    Route::get('/review/{id}/createComplete', [ReviewController::class, 'showComplete'])->name('reviews.complete');
+    /* 送信完了画面 */
+    Route::get('/review/createComplete', [ReviewController::class, 'showComplete'])->name('reviews.complete');
 
     /* レビュー検索画面 */
     Route::get('/search', 'App\Http\Controllers\ReviewController@search')->name('searchReviews');

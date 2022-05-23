@@ -7,17 +7,17 @@
         <div class="w-2/5 mx-5 my-auto">
             <img src="/images/McDonald's.png" alt="マクドナルド">
         </div>
-        <div class="w-2/5 ml-auto mx-auto">
+        <div class="w-2/5 mx-auto">
             <h2 class="mb-8 text-2xl">{{ $restaurant->name }}</h2>
             @if($AverageRatings[$loop->index] > 0)
-            <div class="mb-8">{{$AverageRatings[$loop->index]}}</div>
+            <div class="mb-8">{{ round($AverageRatings[$loop->index], 1)}}</div>
             @else
             <div class="mb-8">まだレビューがありません</div>
             @endif
             <p class="mb-10">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
             <div class="flex text-white">
-                <a href="" class="btn py-4 px-8 rounded-md bg-green-500">詳細</a>
-                <a href="{{ route('reviews.create',['id' => $restaurant->id ]) }}" class="btn p-4 rounded-md ml-auto bg-blue-500">レビューする</a>
+                <!-- <a href="" class="btn py-4 px-8 rounded-md bg-green-500">詳細</a> -->
+                <a href="{{ route('reviews.create',['id' => $restaurant->id ]) }}" class="btn p-4 rounded-md mr-auto bg-blue-500">レビューする</a>
             </div>
         </div>
     </div>

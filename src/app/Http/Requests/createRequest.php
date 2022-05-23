@@ -33,4 +33,5 @@ class createRequest extends FormRequest
             'opinion' => 'required|string|max:200',
         ];
     }
+
 }

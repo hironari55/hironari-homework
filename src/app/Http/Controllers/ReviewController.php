@@ -12,8 +12,8 @@ class ReviewController extends Controller
 {
     private $AverageRatings = [];
     private $numberOne = 1;
-    private $RestaurantsNames = [];
     private $formItems = ["name", "gender", "age", "emailAddress", "receiveEmail","evaluation", "opinion"];
+
     public function index()
     {
         /* それぞれのレビューの取得を関数化する */
@@ -31,7 +31,7 @@ class ReviewController extends Controller
         ]);
     }
 
-    public function showReviewCreate($id)
+    public function showCreate($id)
     {
         $restaurant  = Restaurant::find($id);
 
@@ -41,64 +41,67 @@ class ReviewController extends Controller
         ]);
     }
 
-    public function create($id, createRequest $request)
+    public function postCreate($id, CreateRequest $request)
     {
         $input = $request->only($this->formItems);
-
         //セッションに書き込む
         $request->session()->put("form_input", $input);
-
-        /*
-        $review = new Review();
-        $review->user_id = Auth::user()->id;
-        $review->name = $request->name;
-        $review->gender = $request->gender;
-        $review->age = $request->age;
-        $review->emailAddress = $request->emailAddress;
-        $review->receiveEmail= $request->receiveEmail;
-        $review->evaluation = $request->evaluation;
-        $review->opinion = $request->opinion;
-
-        $restaurant = Restaurant::find($id);
-        $restaurant->reviews()->save($review);
-        */
-
         return redirect()->route('reviews.confirm', ['id' => $id]);
     }
 
-    public function showConfirm($id, createRequest $request)
+    public function showConfirm($id, request $request)
     {
         $input = $request->session()->get("form_input");
         if (!$input) {
-            return redirect()->action("ReviewController@showReviewCreate");
+            return redirect()->route('reviews.create', ['id' => $id]);
         }
 
-        return view("form_confirm", ['id' => $id, "input" => $input]);
+        return view("reviewConfirm", [
+            'id' => $id,
+            'input' => $input
+        ]);
     }
 
-    public function confirm($id, createRequest $request)
+    public function postConfirm($id, Request $request)
     {
         //セッションから値を取り出す
 		$input = $request->session()->get("form_input");
 
         //セッションに値が無い時はフォームに戻る
         if (!$input) {
-            return redirect()->action("ReviewController@showReviewCreate");
+            return redirect()->route('reviews.create', ['id' => $id]);
         }
 
-        //送信処理 　ここを書く
+        //再入力ボタン 画面遷移
+        if ($request->has("back")) {
+            return redirect()->route('reviews.create',['id' => $id])
+				->withInput($input);
+        }
 
+        //送信処理
+        $review = new Review();
+        $review->user_id = Auth::user()->id;
+        $review->name = $input['name'];
+        $review->gender = $input['gender'];
+        $review->age = $input['age'];
+        $review->emailAddress = $input['emailAddress'];
+        $review->receiveEmail= $input['receiveEmail'];
+        $review->evaluation = $input['evaluation'];
+        $review->opinion = $input['opinion'];
+
+        //一対多の関係で保存する
+        $restaurant = Restaurant::find($id);
+        $restaurant->reviews()->save($review);
 
         //セッションを空にする
         $request->session()->forget("form_input");
 
-        return redirect()->action("ReviewController@showComplete");
-
+        return redirect()->route('reviews.complete');
     }
 
     public function showComplete()
     {
-
+        return view('reviewComplete');
     }
 
     public function search()
